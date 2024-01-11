@@ -6,7 +6,7 @@
 #define CARD_VALUES 13
 #define MAX_HAND 10
 
-// Representación de las cartas
+// Representación de las cartas per jugar
 char *values[] = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
 char *suits[] = {"Corazones", "Diamantes", "Picas", "Tréboles"};
 
