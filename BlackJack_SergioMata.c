@@ -23,26 +23,6 @@ int numCartasJugador = 0;
 int sumaJugador = 0;
 char eleccion;
 
-void inicializarMazo() {
-    for (int i = 0; i < TOTAL_CARTAS; i++) {
-        mazo[i].valor = valores[i % VALORES_CARTA];
-        mazo[i].palo = palos[i / VALORES_CARTA];
-        mazo[i].valor_numerico = (i % VALORES_CARTA) + 2;
-        if (mazo[i].valor_numerico > 10) mazo[i].valor_numerico = 10;
-        if (i % VALORES_CARTA == VALORES_CARTA - 1) mazo[i].valor_numerico = 11;
-    }
-}
-
-void mezclarMazo() {
-    srand(time(NULL));
-    for (int i = 0; i < TOTAL_CARTAS; i++) {
-        int j = rand() % TOTAL_CARTAS;
-        struct carta temp = mazo[i];
-        mazo[i] = mazo[j];
-        mazo[j] = temp;
-    }
-}
-
 void mostrarCarta(struct carta c) {
     printf("  %s de %s\n", c.valor, c.palo);
 }
@@ -56,8 +36,21 @@ int sumarMano(struct carta mano[], int numCards) {
 }
 
 int main() {
-    inicializarMazo();
-    mezclarMazo();
+    for (int i = 0; i < TOTAL_CARTAS; i++) {
+        mazo[i].valor = valores[i % VALORES_CARTA];
+        mazo[i].palo = palos[i / VALORES_CARTA];
+        mazo[i].valor_numerico = (i % VALORES_CARTA) + 2;
+        if (mazo[i].valor_numerico > 10) mazo[i].valor_numerico = 10;
+        if (i % VALORES_CARTA == VALORES_CARTA - 1) mazo[i].valor_numerico = 11;
+    }
+
+    srand(time(NULL));
+    for (int i = 0; i < TOTAL_CARTAS; i++) {
+        int j = rand() % TOTAL_CARTAS;
+        struct carta temp = mazo[i];
+        mazo[i] = mazo[j];
+        mazo[j] = temp;
+    }
 
     printf("Bienvenido al Blackjack!\n");
 
