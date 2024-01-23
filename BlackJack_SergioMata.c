@@ -66,8 +66,8 @@ int main() {
     playerSum = sumHand(playerHand, numPlayerCards);
 
     printf("Tus cartas:\n");
-    showCard(playerHand[0]);
-    showCard(playerHand[1]);
+    printf("  %s de %s\n", c.value, c.suit);
+    printf("  %s de %s\n", c.value, c.suit);
     printf("Suma total: %d\n", playerSum);
 
     while (playerSum < 21) {
@@ -75,7 +75,7 @@ int main() {
         scanf(" %c", &choice);
 
         if (choice == 's' || choice == 'S') {
-            playerHand[numPlayerCards] = deck[numPlayerCards + 1];
+            playerHand[numPlayerCards] = deck[numPlayerCards];
             playerSum = sumHand(playerHand, ++numPlayerCards);
 
             printf("Nueva carta:\n");
